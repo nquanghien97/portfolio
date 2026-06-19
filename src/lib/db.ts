@@ -10,17 +10,16 @@ function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL;
   
   if (!connectionString) {
-    // Fallback to standard instantiation if DATABASE_URL is not set (e.g. during build-time lint checks)
-    return new PrismaClient();
+    // Fallback if DATABASE_URL is not set (e.g. during build-time)
+    // We instantiate with a dummy pg pool so PrismaClient constructor doesn't throw
+    const dummyPool = new Pool({ connectionString: 'postgresql://dummy:dummy@localhost:5432/dummy' });
+    const dummyAdapter = new PrismaPg(dummyPool);
+    return new PrismaClient({ adapter: dummyAdapter });
   }
 
-  if (connectionString.startsWith('postgresql://') || connectionString.startsWith('postgres://')) {
-    const pool = new Pool({ connectionString });
-    const adapter = new PrismaPg(pool);
-    return new PrismaClient({ adapter });
-  }
-
-  return new PrismaClient();
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaPg(pool);
+  return new PrismaClient({ adapter });
 }
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
