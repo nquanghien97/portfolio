@@ -148,6 +148,14 @@ body {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
 }
 
+.glassmorphism-dark {
+  background: rgba(28, 48, 74, 0.85); /* #1C304A with 85% opacity */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
 .gradient-hero {
   background: linear-gradient(135deg, #1C304A 0%, #2B4462 40%, #1C304A 70%, #1E3A8A 100%);
 }

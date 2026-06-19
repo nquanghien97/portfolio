@@ -45,7 +45,7 @@ export function Navbar() {
           <nav
             className={`flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 ${
               isScrolled
-                ? 'glassmorphism-light shadow-lg'
+                ? 'glassmorphism-dark shadow-lg'
                 : 'bg-transparent'
             }`}
           >
@@ -54,11 +54,7 @@ export function Navbar() {
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform">
                 <span className="text-white font-black text-xl">N</span>
               </div>
-              <span
-                className={`text-xl font-bold uppercase tracking-wider transition-colors ${
-                  isScrolled ? 'text-primary' : 'text-white'
-                }`}
-              >
+              <span className="text-xl font-bold uppercase tracking-wider transition-colors text-white">
                 NEVIN
               </span>
             </Link>
@@ -73,17 +69,13 @@ export function Navbar() {
                     href={link.href}
                     className={`relative px-4 py-2 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300 hover:scale-105 ${
                       isActive
-                        ? isScrolled
-                          ? 'text-accent bg-accent/10'
-                          : 'text-sky-300'
-                        : isScrolled
-                        ? 'text-text-primary hover:text-accent'
+                        ? 'text-sky-300'
                         : 'text-white/80 hover:text-white'
                     }`}
                   >
                     {t(link.key)}
                     {isActive && (
-                      <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full ${isScrolled ? 'bg-accent' : 'bg-sky-300'}`} />
+                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-sky-300" />
                     )}
                   </Link>
                 );
@@ -99,21 +91,17 @@ export function Navbar() {
                   className={`px-2 py-1 rounded font-semibold transition-all ${
                     locale === 'en'
                       ? 'bg-accent text-white'
-                      : isScrolled
-                      ? 'text-text-secondary hover:text-accent'
                       : 'text-white/60 hover:text-white'
                   }`}
                 >
                   EN
                 </button>
-                <span className={isScrolled ? 'text-text-secondary' : 'text-white/40'}>/</span>
+                <span className="text-white/40">/</span>
                 <button
                   onClick={() => switchLocale('vi')}
                   className={`px-2 py-1 rounded font-semibold transition-all ${
                     locale === 'vi'
                       ? 'bg-accent text-white'
-                      : isScrolled
-                      ? 'text-text-secondary hover:text-accent'
                       : 'text-white/60 hover:text-white'
                   }`}
                 >
@@ -132,11 +120,7 @@ export function Navbar() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileOpen(true)}
-                className={`lg:hidden p-2 rounded-lg transition-colors ${
-                  isScrolled
-                    ? 'text-text-primary hover:bg-gray-100'
-                    : 'text-white hover:bg-white/10'
-                }`}
+                className="lg:hidden p-2 rounded-lg transition-colors text-white hover:bg-white/10"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />

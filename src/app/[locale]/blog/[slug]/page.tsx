@@ -66,59 +66,67 @@ export default async function BlogPostDetailPage({ params }: BlogPostPageProps) 
   const gradIndex = post.id % gradients.length;
 
   return (
-    <div className="bg-surface min-h-screen pt-28 pb-20 text-slate-800 dark:text-slate-100">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
-        {/* Back Link */}
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-sm font-bold text-text-secondary hover:text-accent transition-colors mb-8 group"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          {t('allPosts')}
-        </Link>
+    <div className="bg-surface min-h-screen text-slate-800">
+      {/* Dark Hero Banner */}
+      <section className="relative bg-primary pt-32 pb-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(125,211,252,0.12),transparent_60%)]" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 text-white">
+          {/* Back Link */}
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-white transition-colors mb-6 group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            {t('allPosts')}
+          </Link>
 
-        {/* Article Meta Header */}
-        <header className="space-y-4 mb-8">
-          <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full uppercase tracking-wider">
-            {post.category}
-          </span>
-          
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary tracking-tight leading-tight uppercase">
-            {title}
-          </h1>
+          {/* Article Meta Header */}
+          <header className="space-y-4">
+            <span className="inline-block px-3 py-1 bg-white/10 text-white text-xs font-bold rounded-full uppercase tracking-wider border border-white/10">
+              {post.category}
+            </span>
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase animate-fade-in">
+              {title}
+            </h1>
 
-          <div className="flex flex-wrap items-center gap-6 text-xs text-text-secondary font-semibold pt-2">
-            <span className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-accent" />
-              {formatDate(post.createdAt)}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-accent" />
-              {t('readingTime', { minutes: post.readingTime })}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <User className="w-4 h-4 text-accent" />
-              By Nevin
-            </span>
-          </div>
-        </header>
-
-        {/* Large Media Banner */}
-        <div className="relative w-full aspect-[16/7] rounded-3xl overflow-hidden shadow-lg border border-divider mb-12 bg-slate-900">
-          {post.thumbnailUrl ? (
-            <img
-              src={post.thumbnailUrl}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className={`absolute inset-0 bg-gradient-to-br ${gradients[gradIndex]} flex items-center justify-center`}>
-              <span className="text-white/30 font-black text-6xl md:text-8xl uppercase select-none">
-                {title[0] || 'B'}
+            <div className="flex flex-wrap items-center gap-6 text-xs text-white/70 font-semibold pt-2">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-sky-300" />
+                {formatDate(post.createdAt)}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-4 h-4 text-sky-300" />
+                {t('readingTime', { minutes: post.readingTime })}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <User className="w-4 h-4 text-sky-300" />
+                By Nevin
               </span>
             </div>
-          )}
+          </header>
         </div>
+      </section>
+
+      {/* Main Content Section */}
+      <section className="py-16 bg-surface">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 -mt-32 relative z-10">
+          {/* Large Media Banner */}
+          <div className="relative w-full aspect-[16/7] rounded-3xl overflow-hidden shadow-2xl border border-divider mb-12 bg-slate-900 animate-fade-in-up">
+            {post.thumbnailUrl ? (
+              <img
+                src={post.thumbnailUrl}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className={`absolute inset-0 bg-gradient-to-br ${gradients[gradIndex]} flex items-center justify-center`}>
+                <span className="text-white/30 font-black text-6xl md:text-8xl uppercase select-none">
+                  {title[0] || 'B'}
+                </span>
+              </div>
+            )}
+          </div>
 
         {/* Main Body */}
         <article className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-12 shadow-sm space-y-8 text-black">
@@ -143,7 +151,7 @@ export default async function BlogPostDetailPage({ params }: BlogPostPageProps) 
                 {tagsList.map(tag => (
                   <span
                     key={tag}
-                    className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2.5 py-1 rounded border border-slate-200 dark:border-slate-700 font-semibold"
+                    className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded border border-slate-200 font-semibold"
                   >
                     #{tag.trim()}
                   </span>
@@ -153,6 +161,7 @@ export default async function BlogPostDetailPage({ params }: BlogPostPageProps) 
           )}
         </article>
       </div>
-    </div>
+    </section>
+  </div>
   );
 }

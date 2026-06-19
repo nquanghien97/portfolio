@@ -68,80 +68,88 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const gradIndex = project.id % gradients.length;
 
   return (
-    <div className="bg-surface min-h-screen pt-28 pb-20 text-slate-800 dark:text-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-        {/* Back Link */}
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 text-sm font-bold text-text-secondary hover:text-accent transition-colors mb-8 group"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          {t('backToProjects')}
-        </Link>
+    <div className="bg-surface min-h-screen text-slate-800">
+      {/* Dark Hero Banner */}
+      <section className="relative bg-primary pt-32 pb-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(125,211,252,0.12),transparent_60%)]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10 text-white">
+          {/* Back Link */}
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-white transition-colors mb-6 group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            {t('backToProjects')}
+          </Link>
 
-        {/* Hero Header Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
-          <div className="lg:col-span-2 space-y-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary tracking-tight leading-tight">
-              {title}
-            </h1>
-            
-            <div className="flex flex-wrap gap-2 pt-2">
-              {tagsList.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 bg-accent/10 text-accent text-[11px] font-bold rounded-full uppercase tracking-wider"
+          {/* Hero Header Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div className="lg:col-span-2 space-y-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-white uppercase animate-fade-in">
+                {title}
+              </h1>
+              
+              <div className="flex flex-wrap gap-2 pt-2">
+                {tagsList.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 bg-white/10 text-white text-[11px] font-bold rounded-full uppercase tracking-wider border border-white/10"
+                  >
+                    {tag.trim()}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Links */}
+            <div className="flex flex-wrap sm:flex-nowrap gap-4 lg:justify-end">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1C304A] hover:bg-[#2B4462] text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer border border-[#2B4462]"
                 >
-                  {tag.trim()}
+                  <Globe className="w-4 h-4" />
+                  {t('liveDemo')}
+                  <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all cursor-pointer"
+                >
+                  <Code className="w-4 h-4" />
+                  {t('sourceCode')}
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Section */}
+      <section className="py-16 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 -mt-32 relative z-10">
+          {/* Large Media Banner */}
+          <div className="relative w-full aspect-[21/9] sm:aspect-[16/6] rounded-3xl overflow-hidden shadow-2xl border border-divider mb-12 bg-slate-900 animate-fade-in-up">
+            {project.thumbnailUrl ? (
+              <img
+                src={project.thumbnailUrl}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className={`absolute inset-0 bg-gradient-to-br ${gradients[gradIndex]} flex items-center justify-center`}>
+                <span className="text-white/40 font-black text-8xl md:text-[12rem] uppercase select-none">
+                  {title[0] || 'P'}
                 </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Action Links Card (Top right on desktop) */}
-          <div className="flex flex-wrap sm:flex-nowrap gap-4 lg:justify-end">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1C304A] hover:bg-[#2B4462] text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer"
-              >
-                <Globe className="w-4 h-4" />
-                {t('liveDemo')}
-                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-              </a>
-            )}
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 dark:text-slate-800 font-bold text-sm uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer"
-              >
-                <Code className="w-4 h-4" />
-                {t('sourceCode')}
-              </a>
+              </div>
             )}
           </div>
-        </div>
-
-        {/* Large Media Banner */}
-        <div className="relative w-full aspect-[21/9] sm:aspect-[16/6] rounded-3xl overflow-hidden shadow-lg border border-divider mb-12 bg-slate-900">
-          {project.thumbnailUrl ? (
-            <img
-              src={project.thumbnailUrl}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className={`absolute inset-0 bg-gradient-to-br ${gradients[gradIndex]} flex items-center justify-center`}>
-              <span className="text-white/40 font-black text-8xl md:text-[12rem] uppercase select-none">
-                {title[0] || 'P'}
-              </span>
-            </div>
-          )}
-        </div>
 
         {/* Content & Sidebar Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
@@ -166,8 +174,8 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {/* Project Meta Sidebar */}
           <div className="space-y-6">
             {/* Project Specs */}
-            <div className="bg-white dark:bg-slate-900 border border-divider rounded-3xl p-6 shadow-sm space-y-6">
-              <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest border-b border-divider pb-3">
+            <div className="bg-white border border-divider rounded-3xl p-6 shadow-sm space-y-6">
+              <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest border-b border-divider pb-3">
                 {isVi ? 'Thông tin chung' : 'General info'}
               </h3>
               
@@ -177,9 +185,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   <Cpu className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                   <div>
                     <div className="text-[10px] text-text-secondary uppercase tracking-wider">{t('techStack')}</div>
-                    <div className="text-slate-800 dark:text-slate-200 mt-1 flex flex-wrap gap-1.5">
+                    <div className="text-slate-800 mt-1 flex flex-wrap gap-1.5">
                       {tagsList.map(tag => (
-                        <span key={tag} className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700">
+                        <span key={tag} className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">
                           {tag.trim()}
                         </span>
                       ))}
@@ -194,7 +202,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                     <div className="text-[10px] text-text-secondary uppercase tracking-wider">
                       {isVi ? 'Ngày đăng ký' : 'Published date'}
                     </div>
-                    <div className="text-slate-800 dark:text-slate-200 mt-1 font-bold">
+                    <div className="text-slate-800 mt-1 font-bold">
                       {new Date(project.createdAt).toLocaleDateString(locale, {
                         year: 'numeric',
                         month: 'long',
@@ -226,6 +234,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
+  </div>
   );
 }
