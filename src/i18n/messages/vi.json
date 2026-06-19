@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "services": "Dịch vụ",
+    "projects": "Dự án",
+    "blog": "Bài viết",
+    "contact": "Liên hệ",
+    "language": "Ngôn ngữ"
+  },
+  "hero": {
+    "prefix": "Một website không chỉ là một sản phẩm số —",
+    "title": "đó là bộ mặt thương hiệu của bạn trên Internet.",
+    "description": "Mình thiết kế và xây dựng các website custom hiệu năng cao, giúp thương hiệu thể hiện bản sắc một cách rõ ràng và khác biệt.",
+    "cta_contact": "Liên hệ ngay",
+    "cta_explore": "Khám phá"
+  },
+  "about": {
+    "sectionLabel": "Về mình",
+    "sectionTitle": "Mình là ai",
+    "quote": "Dám nghĩ dám làm, khổ trước sướng sau.",
+    "quoteAuthor": "Nevin",
+    "description": "Mình là một full-stack developer đam mê với con mắt tinh tế về thiết kế. Mình chuyên xây dựng các ứng dụng web hiện đại, có khả năng mở rộng và mang lại trải nghiệm người dùng xuất sắc. Với kinh nghiệm về React, Next.js, Node.js và các công nghệ cloud, mình biến ý tưởng thành sản phẩm số hoàn chỉnh.",
+    "readMore": "Tìm hiểu thêm",
+    "experience": "Năm kinh nghiệm",
+    "projects_done": "Dự án hoàn thành",
+    "clients": "Khách hàng hài lòng",
+    "technologies": "Công nghệ"
+  },
+  "services": {
+    "sectionLabel": "Dịch vụ",
+    "sectionTitle": "Mình làm gì",
+    "sectionDescription": "Mình tạo ra trải nghiệm thân thiện, cá nhân hoá — rồi build và tối ưu để mọi thứ vận hành mượt và phát triển bền lâu.",
+    "items": [
+      {
+        "title": "Phát triển Web toàn diện",
+        "description": "Mình thiết kế, phát triển và triển khai website hoàn chỉnh từ đầu — mang lại giải pháp nhanh, có khả năng mở rộng và sẵn sàng đưa vào vận hành."
+      },
+      {
+        "title": "Thiết kế UI/UX",
+        "description": "Thiết kế lấy người dùng làm trung tâm với wireframe, mockup chất lượng cao và prototype tương tác giúp hiện thực hóa tầm nhìn của bạn."
+      },
+      {
+        "title": "Phát triển MVP",
+        "description": "Thiết kế sản phẩm nhanh và triển khai kỹ thuật cho Minimum Viable Product để xác thực ý tưởng kinh doanh một cách nhanh chóng."
+      },
+      {
+        "title": "Tối ưu hiệu suất",
+        "description": "Kiểm tra hiệu suất, tối ưu SEO và tinh chỉnh hạ tầng để website của bạn chạy nhanh như chớp."
+      },
+      {
+        "title": "Phát triển API & Backend",
+        "description": "Thiết kế API mạnh mẽ, bảo mật và có khả năng mở rộng cùng kiến trúc backend sử dụng công nghệ hiện đại."
+      },
+      {
+        "title": "Thiết kế lại Website",
+        "description": "Hiện đại hóa website hiện tại với giao diện UX cải tiến, hiệu suất tốt hơn và tăng tương tác người dùng."
+      }
+    ]
+  },
+  "projects": {
+    "sectionLabel": "Dự án",
+    "sectionTitle": "Dự án nổi bật",
+    "sectionDescription": "Một số dự án mình đã thực hiện, thể hiện kỹ năng thiết kế và phát triển.",
+    "viewAll": "Xem tất cả dự án",
+    "viewProject": "Xem dự án",
+    "liveDemo": "Xem Demo",
+    "sourceCode": "Mã nguồn",
+    "techStack": "Công nghệ sử dụng",
+    "relatedProjects": "Dự án liên quan"
+  },
+  "blog": {
+    "sectionLabel": "Blog",
+    "sectionTitle": "Bài viết mới nhất",
+    "sectionDescription": "Chia sẻ suy nghĩ, hướng dẫn và góc nhìn về phát triển web, thiết kế và công nghệ.",
+    "readMore": "Đọc thêm",
+    "readingTime": "{minutes} phút đọc",
+    "allPosts": "Tất cả bài viết",
+    "categories": "Danh mục"
+  },
+  "contact": {
+    "sectionTitle": "Liên hệ",
+    "sectionDescription": "Bạn có dự án cần thực hiện hay chỉ muốn chào hỏi? Hãy liên hệ với mình!",
+    "form": {
+      "name": "Họ và tên",
+      "namePlaceholder": "Nguyễn Văn A",
+      "email": "Địa chỉ email",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Tiêu đề",
+      "subjectPlaceholder": "Yêu cầu dự án",
+      "message": "Nội dung",
+      "messagePlaceholder": "Hãy cho mình biết về dự án của bạn...",
+      "submit": "Gửi tin nhắn",
+      "sending": "Đang gửi...",
+      "success": "Tin nhắn đã được gửi thành công! Mình sẽ phản hồi sớm nhất có thể.",
+      "error": "Có lỗi xảy ra. Vui lòng thử lại sau."
+    },
+    "info": {
+      "emailLabel": "Email",
+      "email": "nquanghien97@gmail.com",
+      "phoneLabel": "Điện thoại",
+      "phone": "+84 35 4664 880",
+      "locationLabel": "Địa chỉ",
+      "location": "TP. Vinh, Việt Nam"
+    }
+  },
+  "footer": {
+    "description": "Developer đam mê kiến tạo trải nghiệm web đẹp mắt và hiệu suất cao.",
+    "quickLinks": "Liên kết nhanh",
+    "services": "Dịch vụ",
+    "socialLinks": "Mạng xã hội",
+    "copyright": "© 2026 Nevin. Mọi quyền được bảo lưu.",
+    "madeWith": "Được tạo bởi ❤️ Nevin"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi",
+    "notFound": "Không tìm thấy trang",
+    "notFoundDescription": "Trang bạn đang tìm kiếm không tồn tại hoặc đã được chuyển đi.",
+    "backToHome": "Về trang chủ",
+    "viewAll": "Xem tất cả",
+    "learnMore": "Tìm hiểu thêm"
+  },
+  "reveal": {
+    "text": "CHÚNG TÔI KIẾN TẠO TRẢI NGHIỆM WEB HIỆN ĐẠI VỚI HÌNH ẢNH XUẤT SẮC VÀ HIỆU NĂNG VƯỢT TRỘI. MỖI PIXEL ĐỀU ĐƯỢC CHĂM CHÚT. MỖI DÒNG CODE ĐỀU ĐƯỢC TỐI ƯU."
+  },
+  "metadata": {
+    "home": {
+      "title": "Nevin | Full-Stack Developer & Designer",
+      "description": "Portfolio cá nhân của Nevin — một full-stack developer đam mê kiến tạo trải nghiệm web đẹp mắt và hiệu suất cao."
+    },
+    "about": {
+      "title": "Giới thiệu",
+      "description": "Tìm hiểu thêm về Nevin — hành trình, kỹ năng và đam mê phát triển web."
+    },
+    "services": {
+      "title": "Dịch vụ",
+      "description": "Khám phá các dịch vụ phát triển web và thiết kế mà mình cung cấp."
+    },
+    "projects": {
+      "title": "Dự án",
+      "description": "Xem danh mục các dự án phát triển web và case studies của mình."
+    },
+    "blog": {
+      "title": "Bài viết",
+      "description": "Các bài viết và chia sẻ về phát triển web, thiết kế và công nghệ."
+    },
+    "contact": {
+      "title": "Liên hệ",
+      "description": "Liên hệ với mình cho dự án phát triển web tiếp theo của bạn."
+    }
+  }
+}

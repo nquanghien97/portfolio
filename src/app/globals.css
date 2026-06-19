@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tektur font loaded via next/font/google in layout.tsx */
+
+/* ============================================
+   TAILWIND v4 THEME CONFIGURATION
+   ============================================ */
+@theme {
+  /* Colors */
+  --color-primary: #1C304A;
+  --color-primary-light: #2B4462;
+  --color-primary-dark: #122032;
+  --color-accent: #1E3A8A;
+  --color-accent-dark: #172554;
+  --color-accent-secondary: #7C3AED;
+  --color-surface: #e1e1e1;
+  --color-surface-dim: #d4d4d4;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-light: #F1F5F9;
+  --color-divider: #CBD5E1;
+
+  /* Font family */
+  --font-tektur: 'Tektur', sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+  --animate-fade-in-up: fadeInUp 0.6s ease-out forwards;
+  --animate-fade-in-down: fadeInDown 0.6s ease-out forwards;
+  --animate-slide-in-left: slideInLeft 0.6s ease-out forwards;
+  --animate-slide-in-right: slideInRight 0.6s ease-out forwards;
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-bounce-gentle: bounceGentle 2s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================
+   CUSTOM KEYFRAMES
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(125, 211, 252, 0.3), 0 0 40px rgba(125, 211, 252, 0.1); }
+  to { box-shadow: 0 0 30px rgba(125, 211, 252, 0.5), 0 0 60px rgba(125, 211, 252, 0.2); }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-tektur);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(125, 211, 252, 0.3);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+}
+
+.glassmorphism-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #1C304A 0%, #2B4462 40%, #1C304A 70%, #1E3A8A 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #1E3A8A 0%, #7C3AED 50%, #1E3A8A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-shadow-glow {
+  text-shadow: 0 0 20px rgba(125, 211, 252, 0.5), 0 0 40px rgba(125, 211, 252, 0.2);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(125, 211, 252, 0.3), 0 0 40px rgba(125, 211, 252, 0.1);
+}
+
+.shadow-glow-lg {
+  box-shadow: 0 0 30px rgba(125, 211, 252, 0.4), 0 0 60px rgba(125, 211, 252, 0.15);
+}
+
+/* Infinite scroll marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Loading screen wave */
+@keyframes waveFlow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.wave-animation {
+  animation: waveFlow 4s linear infinite;
 }

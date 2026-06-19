@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "hero": {
+    "prefix": "A website is not just a digital product —",
+    "title": "it's the face of your brand on the Internet.",
+    "description": "I design and build custom high-performance websites, helping brands express their identity clearly and distinctively.",
+    "cta_contact": "Contact Me",
+    "cta_explore": "Explore"
+  },
+  "about": {
+    "sectionLabel": "About Me",
+    "sectionTitle": "Who I Am",
+    "quote": "Dream big, work hard, stay focused.",
+    "quoteAuthor": "Nevin",
+    "description": "I'm a passionate full-stack developer with a keen eye for design. I specialize in building modern, scalable web applications that deliver exceptional user experiences. With expertise in React, Next.js, Node.js, and cloud technologies, I transform ideas into polished digital products.",
+    "readMore": "Learn More About Me",
+    "experience": "Years Experience",
+    "projects_done": "Projects Completed",
+    "clients": "Happy Clients",
+    "technologies": "Technologies"
+  },
+  "services": {
+    "sectionLabel": "Services",
+    "sectionTitle": "What I Do",
+    "sectionDescription": "I create user-friendly, personalized experiences — then build and optimize everything to run smoothly and grow sustainably.",
+    "items": [
+      {
+        "title": "End-to-End Web Development",
+        "description": "I design, develop, and deploy complete websites from scratch — delivering fast, scalable, and production-ready solutions."
+      },
+      {
+        "title": "UI/UX Design",
+        "description": "User-centric design with wireframing, high-fidelity mockups, and interactive prototyping that brings your vision to life."
+      },
+      {
+        "title": "MVP Development",
+        "description": "Rapid product design and technical execution of Minimum Viable Products to validate your business ideas quickly."
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "Performance audit, SEO optimization, and infrastructure tuning to make your website lightning fast."
+      },
+      {
+        "title": "API & Backend Development",
+        "description": "Robust, secure, and scalable API design and backend architecture using modern technologies."
+      },
+      {
+        "title": "Website Redesign",
+        "description": "Modernizing existing websites with improved UI/UX, better performance, and enhanced user engagement."
+      }
+    ]
+  },
+  "projects": {
+    "sectionLabel": "Portfolio",
+    "sectionTitle": "Featured Projects",
+    "sectionDescription": "A selection of projects I've worked on, showcasing my skills in design and development.",
+    "viewAll": "View All Projects",
+    "viewProject": "View Project",
+    "liveDemo": "Live Demo",
+    "sourceCode": "Source Code",
+    "techStack": "Tech Stack",
+    "relatedProjects": "Related Projects"
+  },
+  "blog": {
+    "sectionLabel": "Blog",
+    "sectionTitle": "Latest Articles",
+    "sectionDescription": "Thoughts, tutorials, and insights about web development, design, and technology.",
+    "readMore": "Read More",
+    "readingTime": "{minutes} min read",
+    "allPosts": "All Posts",
+    "categories": "Categories"
+  },
+  "contact": {
+    "sectionTitle": "Get In Touch",
+    "sectionDescription": "Have a project in mind or just want to say hello? Feel free to reach out!",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Project inquiry",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Something went wrong. Please try again later."
+    },
+    "info": {
+      "emailLabel": "Email",
+      "email": "hello@nevin.dev",
+      "phoneLabel": "Phone",
+      "phone": "+84 xxx xxx xxx",
+      "locationLabel": "Location",
+      "location": "Ho Chi Minh City, Vietnam"
+    }
+  },
+  "footer": {
+    "description": "Passionate developer crafting beautiful and performant web experiences.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "socialLinks": "Social",
+    "copyright": "© 2026 Nevin. All rights reserved.",
+    "madeWith": "Made with ❤️ by Nevin"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Page Not Found",
+    "notFoundDescription": "The page you're looking for doesn't exist or has been moved.",
+    "backToHome": "Back to Home",
+    "viewAll": "View All",
+    "learnMore": "Learn More"
+  },
+  "reveal": {
+    "text": "WE CRAFT MODERN WEB EXPERIENCES WITH EXTRAORDINARY VISUALS AND SUPERIOR PERFORMANCE. EVERY PIXEL IS CONSIDERED. EVERY LINE OF CODE IS OPTIMIZED."
+  },
+  "metadata": {
+    "home": {
+      "title": "Nevin | Full-Stack Developer & Designer",
+      "description": "Personal portfolio of Nevin — a passionate full-stack developer crafting beautiful, high-performance web experiences."
+    },
+    "about": {
+      "title": "About Me",
+      "description": "Learn more about Nevin — my journey, skills, and passion for web development."
+    },
+    "services": {
+      "title": "Services",
+      "description": "Explore the web development and design services I offer."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Browse my portfolio of web development projects and case studies."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Articles and insights about web development, design, and technology."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with me for your next web development project."
+    }
+  }
+}
