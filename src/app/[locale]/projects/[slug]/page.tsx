@@ -146,19 +146,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         {/* Content & Sidebar Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           {/* Main Description Column */}
-          <div className="lg:col-span-2 space-y-6 bg-white dark:bg-slate-900 border border-divider rounded-3xl p-6 sm:p-10 shadow-sm">
-            <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-wider border-b border-divider pb-4 mb-6">
+          <div className="lg:col-span-2 space-y-6 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm text-black">
+            <h2 className="text-xl font-black text-black uppercase tracking-wider border-b border-slate-200 pb-4 mb-6">
               {isVi ? 'Chi tiết dự án' : 'Project details'}
             </h2>
             
             {/* Rich text output from Tiptap */}
             <div
-              className="prose prose-slate max-w-none dark:prose-invert text-base leading-relaxed text-slate-700 dark:text-slate-300
-                prose-headings:font-black prose-headings:text-slate-900 dark:prose-headings:text-white
+              className="prose max-w-none text-base leading-relaxed text-slate-950
+                prose-headings:font-black prose-headings:text-black
                 prose-h3:text-lg prose-h3:uppercase prose-h3:tracking-wide prose-h3:mt-8
                 prose-p:mb-4 prose-p:text-justify
                 prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:space-y-1.5
-                prose-strong:text-slate-900 dark:prose-strong:text-white"
+                prose-strong:text-black"
               dangerouslySetInnerHTML={{ __html: descriptionHtml }}
             />
           </div>

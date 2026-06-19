@@ -121,17 +121,17 @@ export default async function BlogPostDetailPage({ params }: BlogPostPageProps) 
         </div>
 
         {/* Main Body */}
-        <article className="bg-white dark:bg-slate-900 border border-divider rounded-3xl p-6 sm:p-12 shadow-sm space-y-8">
+        <article className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-12 shadow-sm space-y-8 text-black">
           {/* Post Content */}
           <div
-            className="prose prose-slate max-w-none dark:prose-invert text-base leading-relaxed text-slate-700 dark:text-slate-300
-              prose-headings:font-black prose-headings:text-slate-900 dark:prose-headings:text-white
+            className="prose max-w-none text-base leading-relaxed text-slate-950
+              prose-headings:font-black prose-headings:text-black
               prose-h3:text-lg prose-h3:uppercase prose-h3:tracking-wide prose-h3:mt-8
               prose-p:mb-5 prose-p:text-justify
               prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:space-y-2
               prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-6 prose-ol:space-y-2
-              prose-strong:text-slate-900 dark:prose-strong:text-white
-              prose-code:bg-slate-100 dark:prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-xs"
+              prose-strong:text-black
+              prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-xs"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
 
