@@ -67,7 +67,8 @@
     "liveDemo": "Xem Demo",
     "sourceCode": "Mã nguồn",
     "techStack": "Công nghệ sử dụng",
-    "relatedProjects": "Dự án liên quan"
+    "relatedProjects": "Dự án liên quan",
+    "backToProjects": "Quay lại danh sách dự án"
   },
   "blog": {
     "sectionLabel": "Blog",

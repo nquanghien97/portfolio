@@ -16,6 +16,8 @@ export const projectSchema = z.object({
   slug: z.string().min(1),
   titleEn: z.string().min(1),
   titleVi: z.string().min(1),
+  overviewEn: z.string().optional().default(''),
+  overviewVi: z.string().optional().default(''),
   descriptionEn: z.string().min(1),
   descriptionVi: z.string().min(1),
   thumbnailUrl: z.string().optional().default(''),

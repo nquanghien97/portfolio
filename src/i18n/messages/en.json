@@ -67,7 +67,8 @@
     "liveDemo": "Live Demo",
     "sourceCode": "Source Code",
     "techStack": "Tech Stack",
-    "relatedProjects": "Related Projects"
+    "relatedProjects": "Related Projects",
+    "backToProjects": "Back to Projects"
   },
   "blog": {
     "sectionLabel": "Blog",

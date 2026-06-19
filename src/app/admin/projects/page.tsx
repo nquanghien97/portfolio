@@ -17,6 +17,8 @@ interface Project {
   slug: string;
   titleEn: string;
   titleVi: string;
+  overviewEn: string;
+  overviewVi: string;
   descriptionEn: string;
   descriptionVi: string;
   thumbnailUrl: string;
@@ -33,6 +35,8 @@ const emptyForm: z.input<typeof projectSchema> = {
   slug: '',
   titleEn: '',
   titleVi: '',
+  overviewEn: '',
+  overviewVi: '',
   descriptionEn: '',
   descriptionVi: '',
   thumbnailUrl: '',
@@ -76,6 +80,7 @@ export default function AdminProjects() {
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [translatingTitle, setTranslatingTitle] = useState(false);
   const [translatingDesc, setTranslatingDesc] = useState(false);
+  const [translatingOverview, setTranslatingOverview] = useState(false);
   
   const router = useRouter();
 
@@ -126,6 +131,8 @@ export default function AdminProjects() {
       slug: project.slug,
       titleEn: project.titleEn,
       titleVi: project.titleVi,
+      overviewEn: project.overviewEn || '',
+      overviewVi: project.overviewVi || '',
       descriptionEn: project.descriptionEn,
       descriptionVi: project.descriptionVi,
       thumbnailUrl: project.thumbnailUrl || '',
@@ -264,6 +271,25 @@ export default function AdminProjects() {
       toast.error('Dịch tự động thất bại. Hãy tự điền thủ công.');
     } finally {
       setTranslatingDesc(false);
+    }
+  };
+
+  // Google Translate: Translate Overview (Text)
+  const handleTranslateOverview = async () => {
+    const overviewVi = watch('overviewVi');
+    if (!overviewVi) {
+      toast.warn('Vui lòng nhập Mô tả tổng quan (Tiếng Việt) trước!');
+      return;
+    }
+    setTranslatingOverview(true);
+    try {
+      const translated = await translateText(overviewVi);
+      setValue('overviewEn', translated, { shouldValidate: true });
+      toast.success('Đã dịch mô tả tổng quan sang Tiếng Anh!');
+    } catch (error) {
+      toast.error('Dịch tự động thất bại. Hãy tự điền thủ công.');
+    } finally {
+      setTranslatingOverview(false);
     }
   };
 
@@ -556,6 +582,46 @@ export default function AdminProjects() {
                   {errors.order && (
                     <p className="text-red-500 text-[11px] font-semibold">{errors.order.message}</p>
                   )}
+                </div>
+              </div>
+
+              {/* Overview VI & EN */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Overview VI */}
+                <div className="space-y-1.5">
+                  <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    Mô tả tổng quan (Tiếng Việt)
+                  </label>
+                  <textarea
+                    rows={3}
+                    {...register('overviewVi')}
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#1C304A] focus:ring-1 focus:ring-[#1C304A] text-sm font-medium resize-none"
+                    placeholder="Mô tả ngắn gọn về dự án để hiển thị ngoài danh sách..."
+                  />
+                </div>
+
+                {/* Overview EN */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                      Mô tả tổng quan (Tiếng Anh)
+                    </label>
+                    <button
+                      type="button"
+                      onClick={handleTranslateOverview}
+                      disabled={translatingOverview}
+                      className="text-[10px] font-bold text-primary hover:text-primary-light flex items-center gap-1 cursor-pointer disabled:opacity-50 select-none"
+                    >
+                      {translatingOverview ? <RefreshCw className="w-3 h-3 animate-spin" /> : <Languages className="w-3 h-3" />}
+                      Dịch tự động
+                    </button>
+                  </div>
+                  <textarea
+                    rows={3}
+                    {...register('overviewEn')}
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#1C304A] focus:ring-1 focus:ring-[#1C304A] text-sm font-medium resize-none"
+                    placeholder="Brief description of the project for list display..."
+                  />
                 </div>
               </div>
 

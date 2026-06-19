@@ -19,6 +19,8 @@ model Project {
   slug          String   @unique
   titleEn       String
   titleVi       String
+  overviewEn    String   @default("")
+  overviewVi    String   @default("")
   descriptionEn String
   descriptionVi String
   thumbnailUrl  String   @default("")
