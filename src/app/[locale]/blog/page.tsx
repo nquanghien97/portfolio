@@ -5,7 +5,13 @@ import { Link } from '@/i18n/navigation';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const isVi = locale === 'vi';
   const t = await getTranslations('blog');
 
   let posts: Awaited<ReturnType<typeof prisma.blogPost.findMany>> = [];
@@ -47,47 +53,65 @@ export default async function BlogPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, i) => (
-                <article
-                  key={post.id}
-                  className="group bg-white rounded-2xl border border-divider overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
-                >
-                  <div className={`h-44 bg-gradient-to-br ${gradients[i % gradients.length]}`}>
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-white/50 font-black text-5xl">{post.titleEn[0]}</span>
-                    </div>
-                  </div>
+              {posts.map((post, i) => {
+                const title = isVi ? post.titleVi : post.titleEn;
+                const excerpt = isVi ? post.excerptVi : post.excerptEn;
 
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 text-xs text-text-secondary mb-3">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {formatDate(post.createdAt)}
+                return (
+                  <article
+                    key={post.id}
+                    className="group bg-white rounded-2xl border border-divider overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full"
+                  >
+                    <Link href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }} className="block h-44 bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden relative">
+                      {post.thumbnailUrl ? (
+                        <img
+                          src={post.thumbnailUrl}
+                          alt={title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className={`absolute inset-0 bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}>
+                          <span className="text-white/50 font-black text-5xl">{title[0] || 'B'}</span>
+                        </div>
+                      )}
+                    </Link>
+
+                    <div className="p-6 flex flex-col flex-1">
+                      <div className="flex items-center gap-4 text-xs text-text-secondary mb-3">
+                        <span className="flex items-center gap-1 font-semibold">
+                          <Calendar className="w-3.5 h-3.5" />
+                          {formatDate(post.createdAt)}
+                        </span>
+                        <span className="flex items-center gap-1 font-semibold">
+                          <Clock className="w-3.5 h-3.5" />
+                          {t('readingTime', { minutes: post.readingTime })}
+                        </span>
+                      </div>
+
+                      <span className="inline-block px-2.5 py-0.5 bg-accent/10 text-accent text-[10px] font-bold rounded-full uppercase mb-3 self-start">
+                        {post.category}
                       </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" />
-                        {post.readingTime} min
-                      </span>
+
+                      <Link href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }} className="block group/title">
+                        <h3 className="text-lg font-bold text-primary mb-2 group-hover/title:text-accent transition-colors line-clamp-2 uppercase tracking-wide">
+                          {title}
+                        </h3>
+                      </Link>
+                      <p className="text-text-secondary text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
+                        {excerpt}
+                      </p>
+
+                      <Link
+                        href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }}
+                        className="inline-flex items-center gap-1 text-accent font-bold text-xs uppercase tracking-wider group/link hover:gap-2 transition-all mt-auto"
+                      >
+                        {t('readMore')}
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
                     </div>
-
-                    <span className="inline-block px-2.5 py-0.5 bg-accent/10 text-accent text-[10px] font-semibold rounded-full uppercase mb-3">
-                      {post.category}
-                    </span>
-
-                    <h3 className="text-lg font-bold text-primary mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                      {post.titleEn}
-                    </h3>
-                    <p className="text-text-secondary text-sm leading-relaxed line-clamp-3 mb-4">
-                      {post.excerptEn}
-                    </p>
-
-                    <span className="inline-flex items-center gap-1 text-accent font-semibold text-sm group-hover:gap-2 transition-all">
-                      {t('readMore')}
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+              })}
             </div>
           )}
         </div>
