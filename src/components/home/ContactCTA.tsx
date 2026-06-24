@@ -8,7 +8,7 @@ export function ContactCTA() {
   const t = useTranslations('contact');
 
   return (
-    <section className="relative bg-primary py-24 lg:py-32 overflow-hidden">
+    <section className="relative bg-primary py-16 lg:py-24 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(125,211,252,0.15),transparent_60%)]" />
       <div className="absolute top-0 left-0 w-72 h-72 bg-accent-secondary/10 rounded-full blur-[100px] pointer-events-none" />

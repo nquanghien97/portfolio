@@ -34,29 +34,56 @@
     "items": [
       {
         "title": "End-to-End Web Development",
-        "description": "I design, develop, and deploy complete websites from scratch — delivering fast, scalable, and production-ready solutions."
+        "description": "I design, develop, and deploy complete websites from scratch — delivering fast, scalable, and production-ready solutions.",
+        "features": ["Next.js / React / Node.js", "Full-Stack Architecture", "Database Tuning"]
       },
       {
         "title": "UI/UX Design",
-        "description": "User-centric design with wireframing, high-fidelity mockups, and interactive prototyping that brings your vision to life."
+        "description": "User-centric design with wireframing, high-fidelity mockups, and interactive prototyping that brings your vision to life.",
+        "features": ["User Research & UX", "High-fidelity Mockups", "Interactive Figma Prototypes"]
       },
       {
         "title": "MVP Development",
-        "description": "Rapid product design and technical execution of Minimum Viable Products to validate your business ideas quickly."
+        "description": "Rapid product design and technical execution of Minimum Viable Products to validate your business ideas quickly.",
+        "features": ["Fast Time-to-Market", "Core Features MVP", "Scalable Foundations"]
       },
       {
         "title": "Performance Optimization",
-        "description": "Performance audit, SEO optimization, and infrastructure tuning to make your website lightning fast."
+        "description": "Performance audit, SEO optimization, and infrastructure tuning to make your website lightning fast.",
+        "features": ["Lighthouse Score >95", "Image & Asset Compression", "Cache & CDN Tuning"]
       },
       {
         "title": "API & Backend Development",
-        "description": "Robust, secure, and scalable API design and backend architecture using modern technologies."
+        "description": "Robust, secure, and scalable API design and backend architecture using modern technologies.",
+        "features": ["RESTful / GraphQL APIs", "Security & Auth", "Cloud / Serverless Infra"]
       },
       {
         "title": "Website Redesign",
-        "description": "Modernizing existing websites with improved UI/UX, better performance, and enhanced user engagement."
+        "description": "Modernizing existing websites with improved UI/UX, better performance, and enhanced user engagement.",
+        "features": ["UI Modernization", "UX Upgrades", "SEO & Data Preservation"]
       }
-    ]
+    ],
+    "commitments": {
+      "title": "Service Quality Commitments",
+      "items": [
+        {
+          "title": "Lightning Performance",
+          "desc": "Optimized codebase and assets to achieve maximum Lighthouse scores (>95) and sub-1s load times."
+        },
+        {
+          "title": "Fully Responsive",
+          "desc": "Fluid layouts that adapt and perform flawlessly across all desktop, tablet, and mobile screens."
+        },
+        {
+          "title": "SEO & Search Friendly",
+          "desc": "Semantic HTML structure and full meta tags integration to maximize search engine visibility."
+        },
+        {
+          "title": "Secure & Scalable",
+          "desc": "SSL configuration, vulnerability prevention, and modern architecture for sustainable growth."
+        }
+      ]
+    }
   },
   "projects": {
     "sectionLabel": "Portfolio",

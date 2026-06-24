@@ -37,7 +37,7 @@ export function AboutPreview() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="relative bg-surface py-24 lg:py-32 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-surface py-16 lg:py-24 overflow-hidden">
       {/* Decorative background */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 

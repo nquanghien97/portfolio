@@ -34,29 +34,56 @@
     "items": [
       {
         "title": "Phát triển Web toàn diện",
-        "description": "Mình thiết kế, phát triển và triển khai website hoàn chỉnh từ đầu — mang lại giải pháp nhanh, có khả năng mở rộng và sẵn sàng đưa vào vận hành."
+        "description": "Mình thiết kế, phát triển và triển khai website hoàn chỉnh từ đầu — mang lại giải pháp nhanh, có khả năng mở rộng và sẵn sàng đưa vào vận hành.",
+        "features": ["Next.js / React / Node.js", "Kiến trúc Full-Stack", "Tối ưu hóa Database"]
       },
       {
         "title": "Thiết kế UI/UX",
-        "description": "Thiết kế lấy người dùng làm trung tâm với wireframe, mockup chất lượng cao và prototype tương tác giúp hiện thực hóa tầm nhìn của bạn."
+        "description": "Thiết kế lấy người dùng làm trung tâm với wireframe, mockup chất lượng cao và prototype tương tác giúp hiện thực hóa tầm nhìn của bạn.",
+        "features": ["Nghiên cứu hành vi (UX)", "Giao diện độ phân giải cao", "Prototype tương tác Figma"]
       },
       {
         "title": "Phát triển MVP",
-        "description": "Thiết kế sản phẩm nhanh và triển khai kỹ thuật cho Minimum Viable Product để xác thực ý tưởng kinh doanh một cách nhanh chóng."
+        "description": "Thiết kế sản phẩm nhanh và triển khai kỹ thuật cho Minimum Viable Product để xác thực ý tưởng kinh doanh một cách nhanh chóng.",
+        "features": ["Thời gian ra mắt nhanh", "Tập trung tính năng cốt lõi", "Nền tảng dễ mở rộng"]
       },
       {
         "title": "Tối ưu hiệu suất",
-        "description": "Kiểm tra hiệu suất, tối ưu SEO và tinh chỉnh hạ tầng để website của bạn chạy nhanh như chớp."
+        "description": "Kiểm tra hiệu suất, tối ưu SEO và tinh chỉnh hạ tầng để website của bạn chạy nhanh như chớp.",
+        "features": ["Kiểm định Lighthouse >95", "Tối ưu hóa ảnh & assets", "Cấu hình Cache & CDN"]
       },
       {
         "title": "Phát triển API & Backend",
-        "description": "Thiết kế API mạnh mẽ, bảo mật và có khả năng mở rộng cùng kiến trúc backend sử dụng công nghệ hiện đại."
+        "description": "Thiết kế API mạnh mẽ, bảo mật và có khả năng mở rộng cùng kiến trúc backend sử dụng công nghệ hiện đại.",
+        "features": ["API RESTful / GraphQL", "Bảo mật & Phân quyền", "Hạ tầng Cloud / Serverless"]
       },
       {
         "title": "Thiết kế lại Website",
-        "description": "Hiện đại hóa website hiện tại với giao diện UX cải tiến, hiệu suất tốt hơn và tăng tương tác người dùng."
+        "description": "Hiện đại hóa website hiện tại với giao diện UX cải tiến, hiệu suất tốt hơn và tăng tương tác người dùng.",
+        "features": ["Hiện đại hóa giao diện", "Nâng cấp trải nghiệm (UX)", "Bảo toàn SEO & Dữ liệu"]
       }
-    ]
+    ],
+    "commitments": {
+      "title": "Cam kết chất lượng dịch vụ",
+      "items": [
+        {
+          "title": "Hiệu Năng Vượt Trội",
+          "desc": "Tối ưu hóa mã nguồn, đạt điểm số Lighthouse tối đa (>95) giúp tải trang dưới 1 giây."
+        },
+        {
+          "title": "Tương Thích Tuyệt Đối",
+          "desc": "Giao diện thích ứng (Responsive) hoàn hảo, mượt mà trên PC, Tablet và Mobile."
+        },
+        {
+          "title": "Chuẩn SEO & Marketing",
+          "desc": "Cấu trúc HTML chuẩn Semantic, tích hợp Meta Tags đầy đủ giúp tăng xếp hạng Google."
+        },
+        {
+          "title": "Bảo Mật & Bền Vững",
+          "desc": "Thiết lập hệ thống bảo mật SSL, phòng ngừa tấn công và kiến trúc mở rộng dễ bảo trì."
+        }
+      ]
+    }
   },
   "projects": {
     "sectionLabel": "Dự án",

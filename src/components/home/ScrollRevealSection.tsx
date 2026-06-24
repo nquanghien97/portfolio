@@ -44,7 +44,7 @@ export function ScrollRevealSection() {
   return (
     <section
       ref={containerRef}
-      className="relative bg-primary py-24 lg:py-32 overflow-hidden flex items-center justify-center border-y border-white/5"
+      className="relative bg-primary py-16 lg:py-24 overflow-hidden flex items-center justify-center border-y border-white/5"
     >
       {/* Subtle background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(30,58,138,0.25),transparent_70%)] pointer-events-none" />
