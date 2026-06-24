@@ -3,38 +3,63 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useEffect } from 'react';
 
 export function AboutPreview() {
   const t = useTranslations('about');
   const sectionRef = useRef<HTMLElement>(null);
 
-  useGSAP(() => {
-    const stats = gsap.utils.toArray<HTMLElement>('.stat-number');
-    stats.forEach((stat) => {
-      const targetVal = parseInt(stat.getAttribute('data-target') || '0', 10);
-      const obj = { val: 0 };
-      
-      gsap.to(obj, {
-        val: targetVal,
-        duration: 2.0,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: stat,
-          start: 'top 90%',
-          toggleActions: 'play none none reverse',
-        },
-        onUpdate: () => {
-          stat.innerText = Math.floor(obj.val) + '+';
-        },
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const stats = section.querySelectorAll<HTMLElement>('.stat-number');
+    
+    const animateNumbers = () => {
+      stats.forEach((stat) => {
+        const targetVal = parseInt(stat.getAttribute('data-target') || '0', 10);
+        let startTimestamp: number | null = null;
+        const duration = 1500; // 1.5 seconds
+
+        const step = (timestamp: number) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          
+          // Easing: easeOutQuad
+          const easeProgress = progress * (2 - progress);
+          
+          const currentVal = Math.floor(easeProgress * targetVal);
+          stat.innerText = currentVal + '+';
+
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+
+        window.requestAnimationFrame(step);
       });
-    });
-  }, { scope: sectionRef });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateNumbers();
+            observer.unobserve(entry.target); // Run only once
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <section ref={sectionRef} className="relative bg-surface py-16 lg:py-24 overflow-hidden">

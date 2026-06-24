@@ -198,13 +198,13 @@ export function ServicesPreview() {
           </div>
 
           {/* Right Column: Stacked Cards */}
-          <div className="h-[360px] sm:h-[380px] relative w-full flex items-center justify-center">
+          <div className="h-90 sm:h-95 relative w-full flex items-center justify-center">
             {items.map((item, i) => {
               const Icon = item.icon;
               return (
                 <div
                   key={i}
-                  className="service-card absolute w-full max-w-[420px] bg-primary-light border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col justify-between"
+                  className="service-card absolute w-full max-w-105 bg-primary-light border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col justify-between"
                   style={{
                     height: '100%',
                     zIndex: i === 0 ? 10 : i === 1 ? 9 : i === 2 ? 8 : 1,
