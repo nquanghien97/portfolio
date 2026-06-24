@@ -11,6 +11,15 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+if (typeof window !== 'undefined') {
+  ScrollTrigger.config({
+    ignoreMobileResize: true,
+  });
+  ScrollTrigger.normalizeScroll({
+    allowNestedScroll: true,
+  });
+}
+
 interface ProjectType {
   id: number;
   slug: string;

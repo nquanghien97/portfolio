@@ -10,6 +10,16 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+if (typeof window !== 'undefined') {
+  ScrollTrigger.config({
+    ignoreMobileResize: true,
+  });
+  // Optional: Normalize scroll on touch devices to align main and compositor scroll threads
+  ScrollTrigger.normalizeScroll({
+    allowNestedScroll: true,
+  });
+}
+
 const serviceIcons = [Code, Palette, Rocket, Gauge, Server, RefreshCw];
 
 export function ServicesPreview() {
