@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Code, Palette, Rocket, Gauge, Server, RefreshCw } from 'lucide-react';
+import { Code, Palette, Rocket, Gauge, Server, RefreshCw, Zap, Monitor, Search, Shield } from 'lucide-react';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,6 +19,7 @@ export function ServicesPreview() {
   const items = [0, 1, 2, 3, 4, 5].map((i) => ({
     title: t(`items.${i}.title`),
     description: t(`items.${i}.description`),
+    features: [t(`items.${i}.features.0`), t(`items.${i}.features.1`), t(`items.${i}.features.2`)],
     icon: serviceIcons[i],
   }));
 
@@ -164,7 +165,8 @@ export function ServicesPreview() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="h-screen sticky top-0 flex items-center justify-center overflow-hidden px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+        <div className="max-w-7xl w-full flex flex-col gap-6 sm:gap-8 lg:gap-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
           
           {/* Left Column: Info & Indicators */}
           <div className="flex flex-col justify-center">
@@ -173,6 +175,8 @@ export function ServicesPreview() {
               title={t('sectionTitle')}
               description={t('sectionDescription')}
               dark
+              className="mb-2 sm:mb-4"
+              descriptionClassName="hidden sm:block"
             />
 
             {/* Stepper progress bars */}
@@ -194,7 +198,7 @@ export function ServicesPreview() {
           </div>
 
           {/* Right Column: Stacked Cards */}
-          <div className="h-[320px] sm:h-[380px] relative w-full flex items-center justify-center">
+          <div className="h-[360px] sm:h-[380px] relative w-full flex items-center justify-center">
             {items.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -215,8 +219,8 @@ export function ServicesPreview() {
                   >
                     <div>
                       {/* Number */}
-                      <div className="flex items-center justify-between mb-6">
-                        <span className="text-accent text-sm font-bold tracking-widest uppercase">
+                      <div className="flex items-center justify-between mb-4 sm:mb-6">
+                        <span className="text-white text-sm font-bold tracking-widest uppercase">
                           Service 0{i + 1}
                         </span>
                         <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
@@ -224,18 +228,59 @@ export function ServicesPreview() {
                         </div>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 uppercase tracking-wide">
+                      <h3 className="text-2xl sm:text-2xl font-bold text-white mb-4 uppercase tracking-wide">
                         {item.title}
                       </h3>
                     </div>
 
-                    <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+                    <p className="text-white/60 text-base leading-relaxed line-clamp-3">
                       {item.description}
                     </p>
+
+                    {/* Features/Deliverables List */}
+                    <div className="border-t border-white/5 pt-3 sm:pt-4">
+                      <ul className="flex flex-col gap-2">
+                        {item.features.map((feat, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-2 text-white/80 text-sm sm:text-base">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
+                            <span className="truncate sm:whitespace-normal">{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               );
             })}
+          </div>
+          </div>
+
+          {/* Service Commitments Grid (Horizontal Full-width at the bottom) */}
+          <div className="pt-4 sm:pt-6 border-t border-white/10 w-full">
+            <h4 className="text-white text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 lg:mb-4 opacity-50 text-center">
+              {t('commitments.title')}
+            </h4>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+              {[0, 1, 2, 3].map((idx) => {
+                const icons = [Zap, Monitor, Search, Shield];
+                const IconComp = icons[idx];
+                return (
+                  <div key={idx} className="flex gap-3 lg:gap-3 items-center lg:items-start p-3 lg:p-3 bg-white/5 rounded-xl lg:rounded-2xl border border-white/5 hover:border-white/10 hover:bg-white/10 hover:shadow-lg transition-all duration-300">
+                    <div className="p-1.5 lg:p-1.5 bg-accent/20 rounded-lg shrink-0">
+                      <IconComp className="w-4 h-4 lg:w-4 lg:h-4 text-sky-400" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-bold text-xs lg:text-xs uppercase tracking-wider">
+                        {t(`commitments.items.${idx}.title`)}
+                      </h5>
+                      <p className="text-white/40 text-xs leading-relaxed hidden lg:block mt-1">
+                        {t(`commitments.items.${idx}.desc`)}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
         </div>
