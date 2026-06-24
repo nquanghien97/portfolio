@@ -182,7 +182,7 @@ export function ServicesPreview() {
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="h-[100dvh] lg:h-screen sticky top-0 flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12 lg:px-24 py-16 sm:py-0">
+      <div className="h-screen sticky top-0 flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12 lg:px-24 py-16 sm:py-0">
         <div className="max-w-7xl w-full flex flex-col gap-2 sm:gap-8 lg:gap-12 relative z-10">
           
           {/* Main Grid: Info/Stepper on Left, Cards on Right */}
@@ -218,14 +218,14 @@ export function ServicesPreview() {
             </div>
 
             {/* Right Column: Stacked Cards */}
-            <div className="h-full flex items-end">
-              <div className="h-[220px] xs:h-60 sm:h-90 lg:h-105 relative w-full flex items-center justify-center">
+            <div className="h-full flex items-center lg:items-end">
+              <div className="h-60 lg:h-105 relative w-full flex items-center justify-center">
               {items.map((item, i) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={i}
-                    className="service-card absolute w-full max-w-105 bg-primary-light border border-white/10 rounded-3xl p-4 sm:p-8 flex flex-col justify-between"
+                    className="service-card absolute w-full max-w-[420px] bg-primary-light border border-white/10 rounded-3xl p-4 sm:p-8 flex flex-col justify-between"
                     style={{
                       height: '100%',
                       zIndex: i === 0 ? 10 : i === 1 ? 9 : i === 2 ? 8 : 1,
