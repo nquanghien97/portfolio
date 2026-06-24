@@ -176,7 +176,7 @@ export function ServicesPreview() {
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="h-screen sticky top-0 flex items-center justify-center overflow-hidden px-6 md:px-12 lg:px-24">
+      <div className="h-dvh sticky top-0 flex items-center justify-center overflow-hidden px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl w-full flex flex-col gap-6 lg:gap-12 relative z-10">
           
           {/* Main Grid: Info/Stepper on Left, Cards on Right */}
