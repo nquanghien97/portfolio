@@ -182,11 +182,11 @@ export function ServicesPreview() {
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="h-screen sticky top-0 flex items-center justify-center overflow-hidden px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl w-full flex flex-col gap-3 sm:gap-8 lg:gap-12 relative z-10">
+      <div className="h-[100dvh] lg:h-screen sticky top-0 flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12 lg:px-24 py-16 sm:py-0">
+        <div className="max-w-7xl w-full flex flex-col gap-2 sm:gap-8 lg:gap-12 relative z-10">
           
           {/* Main Grid: Info/Stepper on Left, Cards on Right */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-12 lg:gap-24 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-12 lg:gap-24 items-center relative z-10">
             
             {/* Left Column: Info & Indicators */}
             <div className="flex flex-col justify-center">
@@ -219,7 +219,7 @@ export function ServicesPreview() {
 
             {/* Right Column: Stacked Cards */}
             <div className="h-full flex items-end">
-              <div className="h-60 sm:h-90 lg:h-105 relative w-full flex items-center justify-center">
+              <div className="h-[220px] xs:h-60 sm:h-90 lg:h-105 relative w-full flex items-center justify-center">
               {items.map((item, i) => {
                 const Icon = item.icon;
                 return (
@@ -279,11 +279,11 @@ export function ServicesPreview() {
           </div>
 
           {/* Service Commitments Grid (Horizontal Full-width at the bottom) */}
-          <div className="pt-4 lg:pt-6 border-t border-white/10 block">
-            <h4 className="text-white text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-3 lg:mb-4 opacity-50 text-center">
+          <div className="pt-2 sm:pt-4 lg:pt-6 border-t border-white/10 hidden xs:block">
+            <h4 className="text-white text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-2 lg:mb-4 opacity-50 text-center">
               {t('commitments.title')}
             </h4>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6">
               {[0, 1, 2, 3].map((idx) => {
                 const icons = [Zap, Monitor, Search, Shield];
                 const IconComp = icons[idx];
