@@ -15,9 +15,6 @@ if (typeof window !== 'undefined') {
   ScrollTrigger.config({
     ignoreMobileResize: true,
   });
-  ScrollTrigger.normalizeScroll({
-    allowNestedScroll: true,
-  });
 }
 
 interface ProjectType {
