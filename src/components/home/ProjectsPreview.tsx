@@ -143,6 +143,7 @@ export function ProjectsPreview({ initialProjects = [] }: ProjectsPreviewProps) 
             label={t('sectionLabel')}
             title={t('sectionTitle')}
             description={t('sectionDescription')}
+            descriptionClassName="hidden sm:block"
           />
           <div className="mt-2 flex items-center gap-3 text-accent font-bold text-sm uppercase tracking-wider animate-pulse">
             <span>{isVi ? 'Cuộn tiếp để xem' : 'Scroll to explore'}</span>

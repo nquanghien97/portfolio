@@ -182,11 +182,11 @@ export function ServicesPreview() {
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="h-dvh sticky top-0 flex items-center justify-center overflow-hidden px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl w-full flex flex-col gap-6 lg:gap-12 relative z-10">
+      <div className="h-screen sticky top-0 flex items-center justify-center overflow-hidden px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl w-full flex flex-col gap-3 sm:gap-8 lg:gap-12 relative z-10">
           
           {/* Main Grid: Info/Stepper on Left, Cards on Right */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-12 lg:gap-24 items-center relative z-10">
             
             {/* Left Column: Info & Indicators */}
             <div className="flex flex-col justify-center">
@@ -195,6 +195,8 @@ export function ServicesPreview() {
                 title={t('sectionTitle')}
                 description={t('sectionDescription')}
                 dark
+                className="mb-2 sm:mb-4 lg:mb-16"
+                descriptionClassName="hidden sm:block"
               />
 
               {/* Stepper progress bars */}
@@ -217,13 +219,13 @@ export function ServicesPreview() {
 
             {/* Right Column: Stacked Cards */}
             <div className="h-full flex items-end">
-              <div className="h-80 sm:h-90 lg:h-105 relative w-full flex items-center justify-center">
+              <div className="h-60 sm:h-90 lg:h-105 relative w-full flex items-center justify-center">
               {items.map((item, i) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={i}
-                    className="service-card absolute w-full max-w-105 bg-primary-light border border-white/10 rounded-3xl p-5 sm:p-8 flex flex-col justify-between"
+                    className="service-card absolute w-full max-w-105 bg-primary-light border border-white/10 rounded-3xl p-4 sm:p-8 flex flex-col justify-between"
                     style={{
                       height: '100%',
                       zIndex: i === 0 ? 10 : i === 1 ? 9 : i === 2 ? 8 : 1,
@@ -238,31 +240,31 @@ export function ServicesPreview() {
                     >
                       <div>
                         {/* Number */}
-                        <div className="flex items-center justify-between mb-4 sm:mb-6">
+                        <div className="flex items-center justify-between mb-2 sm:mb-6">
                           <span className="text-white/40 text-xs sm:text-sm font-semibold tracking-wider">
                             0{i + 1}
                           </span>
-                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                            <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                          <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                            <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white" />
                           </div>
                         </div>
 
-                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 uppercase tracking-wide">
+                        <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4 uppercase tracking-wide">
                           {item.title}
                         </h3>
                       </div>
 
-                      <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-4 line-clamp-3">
+                      <p className="text-white/60 text-xs sm:text-lg leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
                         {item.description}
                       </p>
 
                       {/* Features/Deliverables List */}
-                      <div className="border-t border-white/5 pt-3 sm:pt-4">
-                        <ul className="flex flex-col gap-1.5 sm:gap-2">
+                      <div className="border-t border-white/5 pt-2 sm:pt-4">
+                        <ul className="flex flex-col gap-1 sm:gap-2">
                           {item.features.map((feat, fIdx) => (
-                            <li key={fIdx} className="flex items-center gap-2 text-white/80 text-sm sm:text-base">
-                              <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
-                              <span>{feat}</span>
+                            <li key={fIdx} className="flex items-center gap-2 text-white/80 text-[11px] sm:text-base">
+                              <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-white shrink-0" />
+                              <span className="truncate sm:whitespace-normal">{feat}</span>
                             </li>
                           ))}
                         </ul>

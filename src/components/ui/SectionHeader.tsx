@@ -6,6 +6,8 @@ interface SectionHeaderProps {
   description?: string;
   align?: 'left' | 'center';
   dark?: boolean;
+  className?: string;
+  descriptionClassName?: string;
 }
 
 export function SectionHeader({
@@ -14,11 +16,13 @@ export function SectionHeader({
   description,
   align = 'left',
   dark = false,
+  className,
+  descriptionClassName,
 }: SectionHeaderProps) {
   return (
     <div
       className={cn(
-        'mb-6 sm:mb-8 lg:mb-16',
+        className || 'mb-6 sm:mb-8 lg:mb-16',
         align === 'center' && 'text-center flex flex-col items-center'
       )}
     >
@@ -42,7 +46,8 @@ export function SectionHeader({
         <p
           className={cn(
             'mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed max-w-2xl',
-            dark ? 'text-white/70' : 'text-text-secondary'
+            dark ? 'text-white/70' : 'text-text-secondary',
+            descriptionClassName
           )}
         >
           {description}
