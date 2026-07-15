@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { useParams } from 'next/navigation';
 import { X } from 'lucide-react';
 
 const navLinks = [
@@ -23,9 +24,20 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
+  const params = useParams<Record<string, string>>();
 
   const switchLocale = (newLocale: 'en' | 'vi') => {
-    router.replace(pathname as '/', { locale: newLocale });
+    if (pathname === '/projects/[slug]' || pathname === '/blog/[slug]') {
+      router.replace(
+        {
+          pathname,
+          params: params as { slug: string },
+        },
+        { locale: newLocale }
+      );
+    } else {
+      router.replace(pathname as '/', { locale: newLocale });
+    }
     onClose();
   };
 

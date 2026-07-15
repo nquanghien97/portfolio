@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { useParams } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { MobileMenu } from './MobileMenu';
 import Image from 'next/image';
@@ -20,6 +21,7 @@ export function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
+  const params = useParams<Record<string, string>>();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
@@ -30,6 +32,17 @@ export function Navbar() {
   }, []);
 
   const switchLocale = (newLocale: 'en' | 'vi') => {
+    if (pathname === '/projects/[slug]' || pathname === '/blog/[slug]') {
+      router.replace(
+        {
+          pathname,
+          params: params as { slug: string },
+        },
+        { locale: newLocale }
+      );
+      return;
+    }
+
     router.replace(pathname as '/', { locale: newLocale });
   };
 
