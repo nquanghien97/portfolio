@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { getLocalizedPageMetadata } from '@/lib/seo';
 import '../globals.css';
 
 const tektur = Tektur({
@@ -15,15 +16,21 @@ const tektur = Tektur({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | Nevin',
-    default: 'Nevin | Full-Stack Developer & Designer',
-  },
-  description:
-    'Personal portfolio of Nevin — a passionate full-stack developer crafting beautiful, high-performance web experiences.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  return {
+    ...getLocalizedPageMetadata(locale, 'home', { en: '', vi: '' }),
+    title: {
+      template: '%s | Nevin',
+      default: 'Nevin | Full-Stack Developer & Designer',
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,

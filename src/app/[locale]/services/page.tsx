@@ -2,6 +2,17 @@ import { useTranslations } from 'next-intl';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Code, Palette, Rocket, Gauge, Server, RefreshCw, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { getLocalizedPageMetadata } from '@/lib/seo';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  return getLocalizedPageMetadata(locale, 'services', { en: '/services', vi: '/dich-vu' });
+}
 
 const serviceIcons = [Code, Palette, Rocket, Gauge, Server, RefreshCw];
 

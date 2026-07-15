@@ -4,6 +4,17 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
+import { getLocalizedPageMetadata } from '@/lib/seo';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  return getLocalizedPageMetadata(locale, 'blog', { en: '/blog', vi: '/bai-viet' });
+}
 
 export default async function BlogPage({
   params,

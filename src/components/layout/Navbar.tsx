@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { Menu, X } from 'lucide-react';
 import { MobileMenu } from './MobileMenu';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/' as const, key: 'home' },
@@ -50,9 +51,12 @@ export function Navbar() {
             }`}
           >
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform">
+            <Link href="/" className="flex items-center gap-2 group">
+              {/* <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform">
                 <span className="text-white font-black text-xl">N</span>
+              </div> */}
+              <div>
+                <Image src="/logo.png" alt="Logo" width={40} height={40} />
               </div>
               <span className="text-xl font-bold uppercase tracking-wider transition-colors text-white">
                 NEVIN

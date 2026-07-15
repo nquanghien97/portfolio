@@ -14,6 +14,7 @@ interface BlogPostPageProps {
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const isVi = locale === 'vi';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   
   const post = await prisma.blogPost.findUnique({
     where: { slug },
@@ -27,14 +28,31 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   const title = isVi ? post.titleVi : post.titleEn;
   const excerpt = isVi ? post.excerptVi : post.excerptEn;
+  const localePath = locale === 'vi' ? `/vi/bai-viet/${slug}` : `/en/blog/${slug}`;
 
   return {
     title: `${title} | Nevin Blog`,
     description: excerpt,
+    alternates: {
+      canonical: localePath,
+      languages: {
+        en: `/en/blog/${slug}`,
+        vi: `/vi/bai-viet/${slug}`,
+      },
+    },
     openGraph: {
       title: `${title} | Nevin Blog`,
       description: excerpt,
+      url: `${baseUrl}${localePath}`,
+      type: 'article',
+      siteName: 'Nevin',
       images: post.thumbnailUrl ? [{ url: post.thumbnailUrl }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Nevin Blog`,
+      description: excerpt,
+      images: post.thumbnailUrl ? [post.thumbnailUrl] : [],
     },
   };
 }

@@ -3,6 +3,17 @@ import { prisma } from '@/lib/db';
 import { ExternalLink, Code } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { getLocalizedPageMetadata } from '@/lib/seo';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  return getLocalizedPageMetadata(locale, 'projects', { en: '/projects', vi: '/du-an' });
+}
 
 export default async function ProjectsPage({
   params,

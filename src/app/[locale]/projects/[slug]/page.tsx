@@ -13,6 +13,7 @@ interface ProjectPageProps {
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const isVi = locale === 'vi';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   
   const project = await prisma.project.findUnique({
     where: { slug },
@@ -28,14 +29,32 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const rawOverview = isVi ? project.overviewVi : project.overviewEn;
   const fallbackDesc = isVi ? project.descriptionVi : project.descriptionEn;
   const description = rawOverview || fallbackDesc.replace(/<[^>]*>/g, '').substring(0, 150);
+  const pageTitle = `${title} | Nevin Projects`;
+  const localePath = locale === 'vi' ? `/vi/du-an/${slug}` : `/en/projects/${slug}`;
 
   return {
-    title: `${title} | Nevin Projects`,
+    title: pageTitle,
     description,
+    alternates: {
+      canonical: localePath,
+      languages: {
+        en: `/en/projects/${slug}`,
+        vi: `/vi/du-an/${slug}`,
+      },
+    },
     openGraph: {
-      title: `${title} | Nevin Projects`,
+      title: pageTitle,
       description,
+      url: `${baseUrl}${localePath}`,
+      type: 'article',
+      siteName: 'Nevin',
       images: project.thumbnailUrl ? [{ url: project.thumbnailUrl }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageTitle,
+      description,
+      images: project.thumbnailUrl ? [project.thumbnailUrl] : [],
     },
   };
 }
