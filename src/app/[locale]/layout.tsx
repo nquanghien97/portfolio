@@ -8,6 +8,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { getLocalizedPageMetadata } from '@/lib/seo';
 import '../globals.css';
+import { Analytics } from "@vercel/analytics/next"
 
 const tektur = Tektur({
   subsets: ['latin', 'vietnamese'],
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
           <main className="min-h-screen">{children}</main>
           <Footer />
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
